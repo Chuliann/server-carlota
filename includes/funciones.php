@@ -113,15 +113,19 @@ function crearComentario($data) {
 
 function cambiarContraseña($contra, $token) {
     if($token === '$2y$10$ZfjMQN6me2idocJ5r3EEFO4nfOfG0Dyunqy5xUpCzpsraBdDLoTxC') {
-        $db = conectarDB();
-        $passwordHash = password_hash($contra, PASSWORD_BCRYPT);
-        $query = " UPDATE admin SET password = $passwordHash WHERE id = 1 ";
-
-        if(mysqli_query($db, $query)) {
-            return 'Contraseña actualizada';
-        } else {
+        try {
+            $db = conectarDB();
+            $passwordHash = password_hash($contra, PASSWORD_BCRYPT);
+            $query = " UPDATE admin SET password = $passwordHash WHERE id = 1 ";
+            if(mysqli_query($db, $query)) {
+                return 'Contraseña actualizada';
+            } else {
+                return 'Hubo un problema';
+            }
+        } catch (\Throwable $th) {
             return 'Hubo un problema';
         }
+        
     } else {
         return 'No autorizado';
     }
