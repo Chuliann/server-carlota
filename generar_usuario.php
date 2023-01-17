@@ -2,15 +2,13 @@
 
 require __DIR__ . "./includes/config/db.php";
 
+/* $2y$10$ZfjMQN6me2idocJ5r3EEFO4nfOfG0Dyunqy5xUpCzpsraBdDLoTxC */
+
 $db = conectarDB();
 
-$usuario = "fernando";
-$password = "Unacontra";
-
-$passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
 
-$query = " INSERT INTO admin (user, password) VALUES ($usuario, $passwordHash); ";
+$query = " UPDATE admin SET password = $passwordHash WHERE id = 1 ";
 
 echo $query;
 
