@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/carlotai
+    - /bin/cp -R public/login.php $DEPLOYPATH/public_html
+    - /bin/cp -R public/comentarios.php $DEPLOYPATH/public_html
+    - /bin/cp -R includes $DEPLOYPATH
+    - /bin/cp -R vendor $DEPLOYPATH
+    - /bin/cp -R variables.php $DEPLOYPATH
+    - /bin/cp -R composer.json $DEPLOYPATH
+    - /bin/cp -R composer.lock $DEPLOYPATH
