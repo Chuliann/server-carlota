@@ -116,7 +116,7 @@ function cambiarContraseña($contra, $token) {
         try {
             $db = conectarDB();
             $passwordHash = password_hash($contra, PASSWORD_BCRYPT);
-            $query = " UPDATE admin SET password = $passwordHash WHERE id = 1 ";
+            $query = " UPDATE admin SET password = '$passwordHash' WHERE id = 1 ";
             if(mysqli_query($db, $query)) {
                 return 'Contraseña actualizada';
             } else {
